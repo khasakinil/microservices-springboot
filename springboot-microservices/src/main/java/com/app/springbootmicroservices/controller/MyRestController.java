@@ -12,4 +12,9 @@ public class MyRestController {
 	public String getMessage() {
 		return "Hi Everyone, Good morning";
 	}
+	
+	@GetMapping("/fortune")
+	public String getDailyFortune() {
+		return "Today is lucky day..!!";
+	}
 }
