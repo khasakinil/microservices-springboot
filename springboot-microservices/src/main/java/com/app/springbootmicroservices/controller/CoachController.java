@@ -9,20 +9,19 @@ import com.app.springbootmicroservices.interfaces.Coach;
 
 @RestController
 public class CoachController {
-//	@Autowired
 	private Coach myCoach;
 
-//	@Autowired
-//	public CoachController(Coach myCoach) {
-//		System.out.println("Constructor level Dependency Injection");
-//		this.myCoach = myCoach;
-//	}
-
 	@Autowired
-	public void setCoachController(Coach myCoach) {
-		System.out.println("Method level Dependency Injection");
+	public CoachController(@Qualifier("trackCoach") Coach myCoach) {
+		System.out.println("Constructor level Dependency Injection");
 		this.myCoach = myCoach;
 	}
+
+//	@Autowired
+//	public void setCoachController(Coach myCoach) {
+//		System.out.println("Method level Dependency Injection");
+//		this.myCoach = myCoach;
+//	}
 
 	@GetMapping("/dailyworkout")
 	public String getDailyWorkout() {
