@@ -13,7 +13,7 @@ public class CoachController {
 
 	@Autowired
 //	public CoachController(@Qualifier("trackCoach") Coach myCoach) {
-	public CoachController(Coach myCoach) {
+	public CoachController(@Qualifier("trackCoach") Coach myCoach) {
 	System.out.println("Constructor level Dependency Injection");
 		this.myCoach = myCoach;
 	}
