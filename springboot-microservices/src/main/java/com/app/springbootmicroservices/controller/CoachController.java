@@ -10,12 +10,15 @@ import com.app.springbootmicroservices.interfaces.Coach;
 @RestController
 public class CoachController {
 	private Coach myCoach;
+	private Coach myCoachAnother;
 
 	@Autowired
 //	public CoachController(@Qualifier("trackCoach") Coach myCoach) {
-	public CoachController(@Qualifier("baseballCoach") Coach myCoach) {
-	System.out.println("Constructor level Dependency Injection");
+	public CoachController(@Qualifier("baseballCoach") Coach myCoach,
+			@Qualifier("baseballCoach") Coach myCoachAnother) {
+		System.out.println("Constructor level Dependency Injection");
 		this.myCoach = myCoach;
+		this.myCoachAnother = myCoachAnother;
 	}
 
 //	@Autowired
@@ -27,6 +30,11 @@ public class CoachController {
 	@GetMapping("/dailyworkout")
 	public String getDailyWorkout() {
 		return myCoach.getDailyWorkout();
+	}
+
+	@GetMapping("/checkscope")
+	public String checkBeanScope() {
+		return "Comparing Beans : " + (myCoachAnother == myCoach);
 	}
 
 }
