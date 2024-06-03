@@ -14,7 +14,7 @@ public class CoachController {
 
 	@Autowired
 //	public CoachController(@Qualifier("trackCoach") Coach myCoach) {
-	public CoachController(@Qualifier("baseballCoach") Coach myCoach,
+	public CoachController(@Qualifier("customBeanId") Coach myCoach,
 			@Qualifier("baseballCoach") Coach myCoachAnother) {
 		System.out.println("Constructor level Dependency Injection");
 		this.myCoach = myCoach;

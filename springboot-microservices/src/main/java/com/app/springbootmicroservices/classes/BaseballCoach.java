@@ -7,9 +7,12 @@ import org.springframework.stereotype.Component;
 
 import com.app.springbootmicroservices.interfaces.Coach;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 @Component
 @Lazy
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+//@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class BaseballCoach implements Coach {
 
 	public BaseballCoach() {
@@ -21,4 +24,13 @@ public class BaseballCoach implements Coach {
 		return "Performing with Baseball Coach";
 	}
 
+	@PostConstruct
+	public void doApplicationStartupStuff() {
+		System.out.println("doApplicationStartupStuff");
+	}
+
+	@PreDestroy
+	public void doApplicationCleanupStuff() {
+		System.out.println("doApplicationCleanupStuff");
+	}
 }
