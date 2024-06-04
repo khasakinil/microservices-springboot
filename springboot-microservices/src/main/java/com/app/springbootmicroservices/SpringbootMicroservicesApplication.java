@@ -5,6 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.app.springbootmicroservices.entitymanager.dao.StudentDAO;
+import com.app.springbootmicroservices.entitymanager.entity.Student;
+
 @SpringBootApplication
 public class SpringbootMicroservicesApplication {
 
@@ -13,9 +16,16 @@ public class SpringbootMicroservicesApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(String[] args) {
+	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			System.out.println("Executed after the Spring Beans have been loaded..");
+			createStudent(studentDAO);
 		};
+	}
+
+	private void createStudent(StudentDAO studentDAO) {
+		System.out.println("Creating Student Object");
+		Student stud = new Student("Amit", "Sawalagi", "amitsawalagi@gmail.com");
+		studentDAO.save(stud);
+		System.out.println(stud.getId());
 	}
 }
