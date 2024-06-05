@@ -21,12 +21,12 @@ public class SpringbootMicroservicesApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
 //			createStudent(studentDAO);
-//			createMultipleStudent(studentDAO);
-//			readStudents(studentDAO);
+			createMultipleStudent(studentDAO);
+			readStudents(studentDAO);
 //			readStudentsByLastName(studentDAO);
 //			updateStudent(studentDAO);
 //			deleteStudent(studentDAO);
-			deleteAllRows(studentDAO);
+//			deleteAllRows(studentDAO);
 		};
 	}
 
