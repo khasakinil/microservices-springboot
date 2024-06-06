@@ -47,21 +47,4 @@ public class StudentRestController {
 		return studentList.get(studentId);
 	}
 
-	@ExceptionHandler
-	public ResponseEntity<StudentErrorResponse> handleStudentException(StudentNotFoundException exception) {
-		StudentErrorResponse error = new StudentErrorResponse();
-		error.setStatus(HttpStatus.NOT_FOUND.value());
-		error.setMessage(exception.getMessage());
-		error.setTimestamp(System.currentTimeMillis());
-		return new ResponseEntity<StudentErrorResponse>(error, HttpStatus.NOT_FOUND);
-	}
-
-	@ExceptionHandler
-	public ResponseEntity<StudentErrorResponse> handleGenericException(Exception exception) {
-		StudentErrorResponse error = new StudentErrorResponse();
-		error.setStatus(HttpStatus.BAD_REQUEST.value());
-		error.setMessage(exception.getMessage());
-		error.setTimestamp(System.currentTimeMillis());
-		return new ResponseEntity<StudentErrorResponse>(error, HttpStatus.BAD_REQUEST);
-	}
 }
