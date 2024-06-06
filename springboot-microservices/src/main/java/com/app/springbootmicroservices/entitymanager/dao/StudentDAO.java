@@ -2,19 +2,19 @@ package com.app.springbootmicroservices.entitymanager.dao;
 
 import java.util.List;
 
-import com.app.springbootmicroservices.entitymanager.entity.Student;
+import com.app.springbootmicroservices.entitymanager.entity.StudentEntity;
 
 public interface StudentDAO {
 
-	void save(Student student);
+	void save(StudentEntity student);
 
-	Student findById(int id);
+	StudentEntity findById(int id);
 
-	List<Student> findAll();
+	List<StudentEntity> findAll();
 
-	List<Student> findAllByLastName(String lastName);
+	List<StudentEntity> findAllByLastName(String lastName);
 
-	void update(Student student);
+	void update(StudentEntity student);
 
 	void delete(Integer studentId);
 	

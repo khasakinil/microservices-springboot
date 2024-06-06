@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.app.springbootmicroservices.entitymanager.entity.Student;
+import com.app.springbootmicroservices.entitymanager.entity.StudentEntity;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -23,38 +23,38 @@ public class StudentDAOImplementation implements StudentDAO {
 
 	@Override
 	@Transactional
-	public void save(Student student) {
+	public void save(StudentEntity student) {
 		entityManager.persist(student);
 	}
 
 	@Override
-	public Student findById(int id) {
-		return entityManager.find(Student.class, id);
+	public StudentEntity findById(int id) {
+		return entityManager.find(StudentEntity.class, id);
 	}
 
 	@Override
-	public List<Student> findAll() {
-		TypedQuery<Student> query = entityManager.createQuery(" FROM Student ORDER BY lastName", Student.class);
+	public List<StudentEntity> findAll() {
+		TypedQuery<StudentEntity> query = entityManager.createQuery(" FROM Student ORDER BY lastName", StudentEntity.class);
 		return query.getResultList();
 	}
 
 	@Override
-	public List<Student> findAllByLastName(String lastName) {
-		TypedQuery<Student> query = entityManager.createQuery(" FROM Student WHERE lastName=:lastName", Student.class);
+	public List<StudentEntity> findAllByLastName(String lastName) {
+		TypedQuery<StudentEntity> query = entityManager.createQuery(" FROM Student WHERE lastName=:lastName", StudentEntity.class);
 		query.setParameter("lastName", lastName);
 		return query.getResultList();
 	}
 
 	@Override
 	@Transactional
-	public void update(Student student) {
+	public void update(StudentEntity student) {
 		entityManager.merge(student);
 	}
 
 	@Override
 	@Transactional
 	public void delete(Integer studentId) {
-		Student student = entityManager.find(Student.class, studentId);
+		StudentEntity student = entityManager.find(StudentEntity.class, studentId);
 		entityManager.remove(student);
 	}
 
